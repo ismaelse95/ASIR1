@@ -1,6 +1,6 @@
 # Sistemas de Ficheros.
 
-Para poder ver los discos que tenemos conectado a nuestro dispositivos desde la terminal tecleamos el comando. Todo esto tendremos que hacerlo como root.
+Para poder ver los discos que tenemos conectado a nuestro dispositivos desde la terminal tecleamos el comando (Todo esto tendremos que hacerlo como root).
 
 ~~~
 $ lsblk -f
