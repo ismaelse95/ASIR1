@@ -1,9 +1,9 @@
-# Montaje de discos en Linux y distintos .
+# Sistemas de Ficheros.
 
 Para poder ver los discos que tenemos conectado a nuestro dispositivos desde la terminal tecleamos el comando. Todo esto tendremos que hacerlo como root.
 
 ~~~
-$ lsblk -f
+``$ lsblk -f``
 ~~~
 
 Para formatear lo podremos hacer con el comando mkfs, podemos ver los sistemas de archivo que tenemos si en la terminal ponemos mkfs. y tabulamos. En mi caso tengo los siguientes.
