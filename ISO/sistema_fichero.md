@@ -3,10 +3,8 @@
 Para poder ver los discos que tenemos conectado a nuestro dispositivos desde la terminal tecleamos el comando. Todo esto tendremos que hacerlo como root.
 
 ~~~
-``$ lsblk -f``
+$ lsblk -f
 ~~~
-
-``ola``
 
 Para formatear lo podremos hacer con el comando mkfs, podemos ver los sistemas de archivo que tenemos si en la terminal ponemos mkfs. y tabulamos. En mi caso tengo los siguientes.
 
@@ -41,7 +39,7 @@ También podemos añadir una etiqueta a nuestro dispositivo cuando le vayamos a 
 mkfs.ntfs -L PRUEBA /dev/sdb1
 ~~~
 
-Y con lsblk -f veriamos que tendremos el nombre que hemos seleccionado.
+Y con ``lsblk -f`` veriamos que tendremos el nombre que hemos seleccionado.
 
 ~~~
 root@debian:/dev/disk# lsblk -f
@@ -62,7 +60,7 @@ Podemos montar mediante el nombre de etiqueta que ya hemos seleccionado. En mi c
 root@debian:/dev/disk# mount -L PRUEBA /mnt
 ~~~
 
-Para montar nuestro disco cuando iniciamos nuestro ordenador tendremos que entrar con un editor de texto en el fichero /etc/fstab.
+Para montar nuestro disco cuando iniciamos nuestro ordenador tendremos que entrar con un editor de texto en el fichero ``/etc/fstab``.
 
 ~~~
 root@debian:/# nano /etc/fstab
