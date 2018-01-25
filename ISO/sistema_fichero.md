@@ -76,13 +76,13 @@ Y a continuación en el fichero al final del todo añadiremos el dispositivo que
 # that works even if disks are added and removed. See fstab(5).
 #
 # <file system> <mount point>   <type>  <options>       <dump>  <pass>
+
 # / was on /dev/sda1 during installation
 UUID=e38da17e-18f8-4328-b6d5-cfb141fac35a /               ext4    errors=remount-ro 0       1
 # swap was on /dev/sda5 during installation
 UUID=929c7136-2757-40da-9c1e-1f461be8ce54 none            swap    sw              0       0
 /dev/sr0        /media/cdrom0   udf,iso9660 user,noauto     0       0
 
-/dev/sdb1       /mnt
+/dev/sdb1       /mnt 			 ntfs 		defaults		0		2 		
 ~~~
-
 
