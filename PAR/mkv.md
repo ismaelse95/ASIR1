@@ -67,7 +67,7 @@ $ echo $MAC0
 Por último podremos levantar la máquina desde el usuario normal con el comando.
 
 ~~~
-kvm -m 512 -hda jessie-1.qcow2 \
+$ kvm -m 512 -hda jessie-1.qcow2 \
 -device virtio-net,netdev=n0,mac=$MAC0 \
 -netdev tap,id=n0,ifname=tap0,script=no,downscript=no
 ~~~
