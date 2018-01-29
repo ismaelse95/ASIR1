@@ -25,7 +25,7 @@ Ahora levantamos br0 con el comando(Como root).
 Tendremos que isntalar el KVM, para instalar tendremos que poner el siguiente paquete.
 
 ~~~
-# sudo apt-get install qemu-kvmc
+# sudo apt-get install qemu-kvm
 ~~~
 
 Ahora añadiremos una nueva interfaz de red virtual(Como root).
@@ -43,7 +43,7 @@ Podemos ver esa nueva interfaz con el comando.
 Ahora lo conectamos al dispositivo br0(Como root).
 
 ~~~
-# brtcl addif br0 tap0
+# brctl addif br0 tap0
 ~~~
 
 Por último levantamos la tarjeta de red(como root).
