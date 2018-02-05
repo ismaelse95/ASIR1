@@ -4,8 +4,10 @@ def pasar_a_segundos(hora,minu,segun):
 	else:
 		return (hora*3600)+(minu*60)+segun
 
-def calcular_coste(tarifa, segun):
-	return int(tarifa) * segun
+def calcular_coste(segun, coste):
+	return int(coste) * segun
 
-def convertir_a_euros:
+def convertir_a_euros(centi):
+	euros = centi / 100
+	return euros
 
