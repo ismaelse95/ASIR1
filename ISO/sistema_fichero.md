@@ -120,3 +120,54 @@ Para comprobar si la swap esta funcionando correctamente podremos comprobarlo co
 swapon -s
 ~~~
 
+### Creación de fichero swap
+
+Vamos a crear un fichero swap de 64 MB. Para ello tendremos que utilizar el comando dd.
+
+~~~
+dd if=/dev/zero of=/swap bs=1024 count=65536
+~~~
+
+~~~
+65536+0 registros leídos
+65536+0 registros escritos
+67108864 bytes (67 MB, 64 MiB) copied, 0,633984 s, 106 MB/s
+~~~
+
+Una vez creado tendremos que preparar la zona /swap con el comando:
+
+~~~
+mkfswap /swap
+~~~
+
+~~~
+mkswap: /swap: permisos 0644 no seguros; se sugiere 0600.
+Configurando espacio de intercambio versión 1, tamaño = 64 MiB (67104768 bytes)
+sin etiqueta, UUID=7a50bedc-40bc-4029-9eb3-afac782ea23b
+~~~
+
+Ahora tendremos que cambiar los permisos para que el fichero swap este seguro como nos dice al ejecutar el anterior comando. Para ello tendremos que utilizar el comando chmod.
+
+~~~
+chmod 600 /swap
+~~~
+
+Ahora la tendremos que encender con el comando.
+
+~~~
+swapon -v /swap
+~~~
+
+~~~
+swapon: /swap: firma encontrada [tamaño de página=4096, firma=swap]
+swapon: /swap: tamaño de página=4096, tamaño de intercambio=67108864, tamaño de dispositivo=67108864
+swapon /swap
+~~~
+
+Con la opción -v podremos ver en pantalla lo todo lo que hace el comando como me lo ha mostrado a mi anteriormente.
+
+Por último vamos al fichero ``/etc/fstap`` e introducimos la siguiente linea para que se inicie.
+
+~~~
+/swap		swap	swap	defaults	0	0	
+~~~
