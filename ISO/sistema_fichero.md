@@ -88,7 +88,7 @@ UUID=929c7136-2757-40da-9c1e-1f461be8ce54 none            swap    sw            
 
 ## Creación de SWAP
 
-Para crear una partición swap lo primero que tendremos que hacer es entrar con fdisk en el disco que queramos hacer la partición con el comando ``fdisk /dev/sdc`` Una vez dentro hacemos una partición y cuando acabemos de hacer un partición ejecutamos la opción **t** y en **Next code** introducimos 19. Esta opción lo que hace es decir a la partición que será de tipo swap. Para finalizar y guardar los cambios ejecutamos la particion **w**.
+Para crear una partición swap lo primero que tendremos que hacer es entrar con fdisk en el disco que queramos hacer la partición con el comando ``fdisk /dev/sdc`` Una vez dentro hacemos una partición y cuando acabemos de hacer un partición ejecutamos la opción **t** y en **Next code** introducimos **82**. Esta opción lo que hace es decir a la partición que será de tipo swap. Para finalizar y guardar los cambios ejecutamos la particion **w**.
 
 A continuación instalamos el paquete partprobe con el comando.
 
