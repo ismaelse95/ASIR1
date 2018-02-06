@@ -99,7 +99,7 @@ sudo apt-get install partprobe
 Una vez instalado lo particionamos con la herramienta partprobe.
 
 ~~~
-mksap -L swap1 /dev/sdc1
+mkswap -L swap1 /dev/sdc1
 ~~~
 
 Para habilitar la swap tan solo tendremos que utilizar el comando:
