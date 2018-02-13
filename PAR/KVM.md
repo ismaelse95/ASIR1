@@ -2,7 +2,7 @@
 
 Configurar tarjeta de red.
 
-Entramos en la configuración de la trjeta de red y tendremos que cambiar nuestra eth0 por br0 dejanlo el fichero ``/etc/network/interfaces`` tal y como lo miestro ahora.
+Entramos en la configuración de la tarjeta de red y tendremos que cambiar nuestra eth0 por br0 dejando el fichero ``/etc/network/interfaces`` tal y como lo muestro ahora.
 
 ~~~
 auto lo
@@ -22,7 +22,7 @@ Ahora levantamos br0 con el comando(Como root).
 # ifup br0
 ~~~
 
-Tendremos que isntalar el KVM, para instalar tendremos que poner el siguiente paquete.
+Tendremos que instalar el KVM, para instalar tendremos que poner el siguiente paquete.
 
 ~~~
 # sudo apt-get install qemu-kvm
