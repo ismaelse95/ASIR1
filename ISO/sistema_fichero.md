@@ -166,7 +166,7 @@ swapon /swap
 
 Con la opción -v podremos ver en pantalla lo todo lo que hace el comando como me lo ha mostrado a mi anteriormente.
 
-Por último vamos al fichero ``/etc/fstap`` e introducimos la siguiente linea para que se inicie.
+Por último vamos al fichero ``/etc/fstap`` e introducimos la siguiente linea para que se inicie en el arranque.
 
 ~~~
 /swap		swap	swap	defaults	0	0	
