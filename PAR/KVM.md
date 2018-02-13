@@ -72,7 +72,7 @@ $ kvm -m 512 -hda jessie-1.qcow2 \
 -netdev tap,id=n0,ifname=tap0,script=no,downscript=no
 ~~~
 
-## Crear bond
+## Creación de bond
 
 Para crear una interface bond tendremos que ejecutar el siguiente comando añadiendo el nombre que queramos a la interfaz.
 
@@ -170,4 +170,68 @@ Duplex: full
 Link Failure Count: 0
 Permanent HW addr: be:06:a1:85:66:33
 Slave queue ID: 0
+~~~
+
+## Tráfico etiquetado entre máquinas virtuales
+
+Lo primero que tenemos que hacer para que podamos tener trafico etiquetado es crear una interfaz de red en mi caso crearé eth0.1 con id 1 y asociando a eth0, todo esto lo haremos con el siguiente comando.
+
+~~~
+# ip link add link eth0 name eth0.1 type vlan id 1
+~~~
+
+A continuacion podremos ver si el comando se ha ejecutado correctamente con el comando.
+
+~~~
+# ip -d link show
+~~~
+
+En la parte inferior de eth0.1 podremos ver que pone vlan 802.1q y a que vlan pertenece.
+
+Ahora pasamos a levantar eth0.1.
+
+~~~
+# ip l set dev eth0.1 up
+~~~
+
+Una vez levantada eth0.1 creamos tap con el comando tuntap.
+
+~~~
+# ip tuntap add mode tap user user
+~~~
+
+A continuación podremos añadir un bridge y conectar a ese bridge tanto eth0.1 como tap0, esto lo haremos con los siguientes comandos.
+
+~~~
+# brctl addbr br1
+~~~
+
+~~~
+# brctl addif br1 eth0.1
+~~~
+
+~~~
+# brctl addif br1 tap0
+~~~
+
+Para finalizar levantaremos tanto tap0 como br1.
+
+~~~
+ip l set dev tap0 up
+~~~
+
+~~~
+ip l set dev br1 up
+~~~
+
+Crearemos la MAC sin root y iniciaremos la máquina con kvm.
+
+~~~
+$ MAC0=$(echo "02:"`openssl rand -hex 5 | sed 's/\(..\)/\1:/g; s/.$//'`)
+~~~
+
+~~~
+$ kvm -m 512 -hda jessie-1.qcow2 \
+-device virtio-net,netdev=n0,mac=$MAC0 \
+-netdev tap,id=n0,ifname=tap0,script=no,downscript=no
 ~~~
