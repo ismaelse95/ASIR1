@@ -77,7 +77,7 @@ $ kvm -m 512 -hda jessie-1.qcow2 \
 Para crear una interface bond tendremos que ejecutar el siguiente comando añadiendo el nombre que queramos a la interfaz.
 
 ~~~
-#ip link add name "name" type bond
+# ip link add name "name" type bond
 ~~~
 
 Ahora creamos los dos tap para ello tendremos que ejecutar dos veces el siguiente comando.
@@ -89,11 +89,11 @@ Ahora creamos los dos tap para ello tendremos que ejecutar dos veces el siguient
 A continuación tendremos que poner tap0 y tap1 como master de bond0 con estos dos comandos.
 
 ~~~
-ip link set dev tap0 master bond0
+# ip link set dev tap0 master bond0
 ~~~
 
 ~~~
-ip link set dev tap1 master bond0
+# ip link set dev tap1 master bond0
 ~~~
 
 Creamos las MAC correspondientes con los siguientes comandos.
@@ -115,29 +115,29 @@ $ kvm -m 512 -hda jessie-1.qcow2 -device virtio-net,netdev=n0,mac=$MAC0 -device 
 Para finalizar tendremos que hacer eth0 y eth1 master de bond0 con los mismo comandos anteriores.
 
 ~~~
-ip link set dev tap0 master bond0
+# ip link set dev eth0 master bond0
 ~~~
 
 ~~~
-ip link set dev tap1 master bond0
+# ip link set dev eth1 master bond0
 ~~~
 
 Ahora subimos el bond0 con el comando.
 
 ~~~
-ip l set dev bond0 up
+# ip l set dev bond0 up
 ~~~
 
 Y le configuramos una ip en mi caso es la siguiente.
 
 ~~~
-ip a add 192.168.0.1/24 dev bond0
+# ip a add 192.168.0.1/24 dev bond0
 ~~~
 
 Por último en el otro lado del bond0 tendremos que configurar una ip para que puedan hacer ping entre ellas para ello le ponemos una ip del mismo rango que la red anterior.
 
 ~~~
-ip a add 192.168.0.2/24 dev bond0
+# ip a add 192.168.0.2/24 dev bond0
 ~~~
 
 Para ver las redes que tenemos en nuestro bond podremos verlas abriendo el siguiente fichero.
