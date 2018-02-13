@@ -143,7 +143,7 @@ Por último en el otro lado del bond0 tendremos que configurar una ip para que p
 Para ver las redes que tenemos en nuestro bond podremos verlas abriendo el siguiente fichero.
 
 ~~~
-cat /proc/net/bonding/bond0
+$ cat /proc/net/bonding/bond0
 ~~~
 
 ~~~
@@ -217,11 +217,11 @@ A continuación podremos añadir un bridge y conectar a ese bridge tanto eth0.1 
 Para finalizar levantaremos tanto tap0 como br1.
 
 ~~~
-ip l set dev tap0 up
+# ip l set dev tap0 up
 ~~~
 
 ~~~
-ip l set dev br1 up
+# ip l set dev br1 up
 ~~~
 
 Crearemos la MAC sin root y iniciaremos la máquina con kvm.
