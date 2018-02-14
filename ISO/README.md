@@ -1,1 +1,1 @@
-Apuntes de la asignatura de Implantación de Sistemas Operativos.PRUEBA
+Apuntes de la asignatura de Implantación de Sistemas Operativos.
