@@ -70,3 +70,8 @@ repquota -s /mnt/QUOTA
 
 Y veremos la cuotas que hay habilitadas en ese punto de montaje.
 
+Para verificar y actualizar el sistema de cuotas ejecutamos el comando.
+
+~~~
+quotacheck -avug /mnt/QUOTA
+~~~

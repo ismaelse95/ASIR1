@@ -96,6 +96,12 @@ A continuación tendremos que poner tap0 y tap1 como master de bond0 con estos d
 # ip link set dev tap1 master bond0
 ~~~
 
+**Si tuvieramos un bridge llamado br0 podremos asociar el bond0 a br0 para ello lo tendremos que hacer con el siguiente comando.**
+
+~~~
+# ip link set dev bond0 master br0
+~~~
+
 Creamos las MAC correspondientes con los siguientes comandos.
 
 ~~~
@@ -203,15 +209,15 @@ Una vez levantada eth0.1 creamos tap con el comando tuntap.
 A continuación podremos añadir un bridge y conectar a ese bridge tanto eth0.1 como tap0, esto lo haremos con los siguientes comandos.
 
 ~~~
-# brctl addbr br1
+# brctl addbr br1  		    // 		ip link add name br0 type bridge
 ~~~
 
 ~~~
-# brctl addif br1 eth0.1
+# brctl addif br1 eth0.1    // 		ip link set dev eth0.1 master br1
 ~~~
 
 ~~~
-# brctl addif br1 tap0
+# brctl addif br1 tap0	    // 		ip link set dev tap0 master br1
 ~~~
 
 Para finalizar levantaremos tanto tap0 como br1.
