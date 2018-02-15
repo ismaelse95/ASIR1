@@ -209,16 +209,16 @@ Una vez levantada eth0.1 creamos tap con el comando tuntap.
 A continuación podremos añadir un bridge y conectar a ese bridge tanto eth0.1 como tap0, esto lo haremos con los siguientes comandos.
 
 ~~~
-# brctl addbr br1  		    // 		ip link add name br0 type bridge
+# brctl addbr br1  			//		ip link add name br0 type bridge
 ~~~
 
 ~~~
-# brctl addif br1 eth0.1    // 		ip link set dev eth0.1 master br1
+# brctl addif br1 eth0.1	//		ip link set dev eth0.1 master br1
 ~~~
 
 ~~~
-# brctl addif br1 tap0	    // 		ip link set dev tap0 master br1
-~~~
+# brctl addif br1 tap0		//		ip link set dev tap0 master br1
+~~~	
 
 Para finalizar levantaremos tanto tap0 como br1.
 
