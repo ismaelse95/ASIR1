@@ -24,7 +24,7 @@ Aquí podemos ver el proceso en el que una máquina pide una ip a un servidor DH
 
 ***
 
-- Socket TCP/IP --> Con un socket a cada lado se establece una conexión entre las dos maquinas mediante un puerto y termina cuando hay un SYN ACK.
+- Socket TCP/IP --> Con un socket a cada lado se establece una conexión entre las dos máquinas mediante un puerto y termina cuando hay un SYN ACK.
 
 - Demonio (daemon) --> Es un proceso que se ejecuta en segundo plano.
 
