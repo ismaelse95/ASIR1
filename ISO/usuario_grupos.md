@@ -58,7 +58,7 @@ $6$asdfghjk$sKnR1xODLmNscbWOYoLPr1p1caSRjWVLFHeAkVIY8rqkcH5kS2VJIlIcpL9PXVsmTyhN
 Para crear un usuario lo haremos con el comando useradd.
 
 ~~~
-usuario@debian:~$ userad ismael
+usuario@debian:~$ useradd ismael
 ~~~
 
 También tendremos distintas opciones para el comando como las siguientes:
