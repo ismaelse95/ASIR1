@@ -53,3 +53,21 @@ Contraseña:
 $6$asdfghjk$sKnR1xODLmNscbWOYoLPr1p1caSRjWVLFHeAkVIY8rqkcH5kS2VJIlIcpL9PXVsmTyhNau..ES9Qe69zjQuS60
 ~~~
 
+## Creación de usuarios
+
+Para crear un usuario lo haremos con el comando useradd.
+
+~~~
+usuario@debian:~$ userad ismael
+~~~
+
+También tendremos distintas opciones para el comando como las siguientes:
+
+- -m: Crea el directorio personal
+- -u: especifica el UID numérico del usuario, se cambia en función del fichero login.defs y los UID existentes.
+- -g: especifica el grupo principal del usuario.
+- -G: especifica los grupos secundarios, separado por comas.
+- -d: ruta del directorio personal.
+- -c: comentario de la cuenta.
+- -s: shell por defecto del usuario.
+- -p: contraseña, deberá estar ya cifrada.
