@@ -71,3 +71,36 @@ También tendremos distintas opciones para el comando como las siguientes:
 - -c: comentario de la cuenta.
 - -s: shell por defecto del usuario.
 - -p: contraseña, deberá estar ya cifrada.
+
+## Ejercicio
+
+**Creación de cuentas de usuario en modo batch, para ello emplea los comandos newusers, chpasswd, pwgen y sentencia de iteración for.**
+
+**Sube los ficheros empleados, así como la sintaxis de los comandos empleados.**
+
+Creamos los usuarios con el for.
+
+~~~
+for i in {1..10}; do `echo usuario$i:x:1000$i:1500::/home/usuario$i:/bin/bash >> usuario.txt`;done
+~~~
+
+Con esto tendriamos creado el fichero con los usuarios
+
+Ahora generamos contraseña y lo guardamos en el fichero pass.txt. 
+
+~~~
+for i in {1..10};do `echo usuario$i:$(pwgen 12 10) >> pass.txt`
+~~~
+
+A continuación cambiamos los permisos para que solo los pueda leer root el fichero.
+
+~~~
+chmod 400 pass.txt
+~~~
+
+Por último cambiamos la contraseña a todos los usuarios.
+
+~~~
+chpasswd < pass.txt
+~~~
+
