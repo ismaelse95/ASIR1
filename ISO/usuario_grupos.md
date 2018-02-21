@@ -84,7 +84,7 @@ Creamos los usuarios con el for.
 for i in {1..10}; do `echo usuario$i:x:1000$i:1500::/home/usuario$i:/bin/bash >> usuario.txt`;done
 ~~~
 
-Con esto tendriamos creado el fichero con los usuarios
+Con esto tendriamos creado el fichero con los usuarios.
 
 Ahora generamos contraseña y lo guardamos en el fichero pass.txt. 
 
