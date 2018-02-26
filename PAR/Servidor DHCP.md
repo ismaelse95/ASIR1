@@ -102,7 +102,9 @@ subnet 192.168.1.0 netmask 255.255.255.0 (
 
 Reiniciamos el servicio con systemctl.
 
-systemctl 
+~~~
+systemctl restart isc-dhcp-server.service
+~~~
 
 Para ver el puerto.
 
