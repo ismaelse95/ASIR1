@@ -97,6 +97,7 @@ Ahora añadimos al fichero una subnet, para repatir un rango de ip.
 ~~~
 subnet 192.168.1.0 netmask 255.255.255.0 (
 	range 192.168.1.2 192.168.1.10;
+	option router 192.168.1.1;
 )
 ~~~
 
