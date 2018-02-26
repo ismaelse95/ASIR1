@@ -8,3 +8,6 @@ def poblacion(texto, municipio):
 			return codigo[0][-5:]
 	if not buscar:
 		return "Error"
+
+def url(codigo):
+	
