@@ -49,15 +49,15 @@ ip l set br1 up
 ~~~
 
 ~~~
+ip l set dev tap0 master br0
+~~~
+
+~~~
 ip l set dev tap1 master br1
 ~~~
 
 ~~~
 ip l set dev tap2 master br1
-~~~
-
-~~~
-ip l set dev tap3 master br1
 ~~~
 
 Creamos las 3 mac.
@@ -74,7 +74,17 @@ $ MAC1=$(echo "02:"`openssl rand -hex 5 | sed 's/\(..\)/\1:/g; s/.$//'`)
 $ MAC2=$(echo "02:"`openssl rand -hex 5 | sed 's/\(..\)/\1:/g; s/.$//'`)
 ~~~
 
-Dentro de la maquina virtual.
+Creamos la primera máquina virtual.
+
+~~~
+kvm -m 512 -hda jessie-1.qcow2 -device virtio-net,netdev=n0,mac=$MAC0 -device virtio-net,netdev=n1,mac=$MAC1 -netdev tap,id=n0,ifname=tap0,script=no,downscript=no -netdev tap,id=n1,ifname=tap1,script=no,downscript=no &
+~~~
+
+~~~
+kvm -m 512 -hda jessie-1.qcow2 -device virtio-net,netdev=n0,mac=$MAC2 -netdev tap,id=n0,ifname=tap2,script=no,downscript=no &
+~~~
+
+Dentro de la primeara máquina virtual.
 
 ~~~
 apt-get install isc-dhcp-server
@@ -95,10 +105,10 @@ En **option domain-name servers** pondremos nuestra ip **192.168.1.1;**.
 Ahora añadimos al fichero una subnet, para repatir un rango de ip.
 
 ~~~
-subnet 192.168.1.0 netmask 255.255.255.0 (
+subnet 192.168.1.0 netmask 255.255.255.0 {
 	range 192.168.1.2 192.168.1.10;
 	option router 192.168.1.1;
-)
+}
 ~~~
 
 Reiniciamos el servicio con systemctl.
@@ -113,3 +123,4 @@ Para ver el puerto.
 ss -lnup |grep 67
 ~~~
 
+Para finalizar hacemos un ``dhclient eth0`` en la segunda máquina virtual para comprobar que tenemos ip.
