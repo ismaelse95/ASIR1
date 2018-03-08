@@ -94,7 +94,7 @@ apt-get install isc-dhcp-server
 ip l set dev eth0 down
 ~~~
 
-Dentro del fichero ``nano /etc/default/isc-fhcp-sever`` vamos a configurar lo siguiente.
+Dentro del fichero ``nano /etc/default/isc-dhcp-sever`` vamos a configurar lo siguiente.
 
 Nos iremos a **INTERFACES** y entre las comillas ponemos **eth1**.
 
@@ -107,7 +107,7 @@ Ahora añadimos al fichero una subnet, para repatir un rango de ip.
 ~~~
 subnet 192.168.1.0 netmask 255.255.255.0 {
 	range 192.168.1.2 192.168.1.10;
-	option router 192.168.1.1;
+	option routers 192.168.1.1;
 }
 ~~~
 
@@ -124,3 +124,28 @@ ss -lnup |grep 67
 ~~~
 
 Para finalizar hacemos un ``dhclient eth0`` en la segunda máquina virtual para comprobar que tenemos ip.
+
+### Reservas en DHCP
+
+Vamos ha hacer una reserva en nuestro servidor. Para ello necesitamos la MAC de un cliente en mi caso escogeré el cliente Debian.
+
+Ahora entraremos como root en el fichero:
+
+~~~
+/etc/dhcp/dhcpd.conf
+~~~
+
+Y a continuación al final del fichero añadiremos la siguiente configuración:
+
+~~~
+host Sancho {
+  hardware ethernet 08:00:27:57:4e:21;
+  fixed-address 192.168.1.200;
+}
+~~~
+
+Reiniciamos el servidor DCHP:
+
+~~~
+systemctl restart isc-dhcp-server
+~~~
