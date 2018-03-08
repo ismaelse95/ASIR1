@@ -138,7 +138,7 @@ Ahora entraremos como root en el fichero:
 Y a continuación al final del fichero añadiremos la siguiente configuración:
 
 ~~~
-host Sancho {
+host cliente1 {
   hardware ethernet 08:00:27:57:4e:21;
   fixed-address 192.168.1.200;
 }
