@@ -241,3 +241,9 @@ $ kvm -m 512 -hda jessie-1.qcow2 \
 -device virtio-net,netdev=n0,mac=$MAC0 \
 -netdev tap,id=n0,ifname=tap0,script=no,downscript=no
 ~~~
+
+Copia de máquinas mediante terminal.
+
+~~~
+$ qemu-img create -b jessie-1.qcow2 -f qcow2 jessie-2.qcow2
+~~~
