@@ -60,8 +60,6 @@ ip -6 a add ipprefijo::1/64 dev eth1
 
 echo 1 > /proc/sys/net/ipv6/conf/all/forwanding
 
-14b1
-
 EN LA MÁQUINA CLIENTE:
 
 ip l set eth0 up
@@ -75,3 +73,6 @@ ip -6 r add default via ipprefijo::1
 configurar dns:
 	nameserver 2001:470:ccba:2::2
 
+Tarjeta de red cambiadas:
+
+echo "" > /etc/udev/rules.d/70-persutent-net.rules
