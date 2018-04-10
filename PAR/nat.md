@@ -20,3 +20,7 @@ iptables -t nat -A POSTROUTING -s 10.0.0.0/24 -o eth0 -j SNAT --to 172.22.x.x (i
 - Podemos hacer un flash:
 	
 	iptables -t nat -F POSTROUTING
+
+iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -d 172.22.x.x -j DNAT --to 10.0.0.2
+
+iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 8080 -d 172.22.x.x -j DNAT --to 10.0.0.2:80
