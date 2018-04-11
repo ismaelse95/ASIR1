@@ -77,3 +77,11 @@ Para ver los directorios y los permisos.
 ~~~
 Get-Chliditem
 ~~~
+
+Instalar sysinternals
+
+~~~
+Install-Package -Name sysinternals -Provider chocolatey
+~~~
+
+Get-Childitem -Recurse -Inlcude zoomit.exe
