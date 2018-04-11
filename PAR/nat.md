@@ -11,7 +11,9 @@ Cada nat tiene cadenas --> PREROUTING = Son las reglas que se aplican en la tabl
 
 SNAT = Es un proceso de Postrouting
 
+~~~
 iptables -t nat -A POSTROUTING -s 10.0.0.0/24 -o eth0 -j SNAT --to 172.22.x.x (ip que tenemos en la eth0 de la máquina servidor)
+~~~
 
 - Reglas que estan aplicadas:
 
@@ -21,6 +23,28 @@ iptables -t nat -A POSTROUTING -s 10.0.0.0/24 -o eth0 -j SNAT --to 172.22.x.x (i
 	
 	iptables -t nat -F POSTROUTING
 
+~~~
 iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -d 172.22.x.x -j DNAT --to 10.0.0.2
+~~~
 
+~~~
 iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 8080 -d 172.22.x.x -j DNAT --to 10.0.0.2:80
+~~~
+
+**Para dejar estatico NAT:**
+
+~~~
+iptables-save > rules.v4
+~~~
+
+~~~
+apt install iptables-persistent
+~~~
+
+~~~
+mv /root/rules.v4 /etc/iptables/
+~~~
+
+Reiniciamos la máquina.
+
+Activar el forward y configurar la máquina.
