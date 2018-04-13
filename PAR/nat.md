@@ -28,7 +28,7 @@ iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -d 172.22.x.x -j DNAT --
 ~~~
 
 ~~~
-iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 8080 -d 172.22.x.x -j DNAT --to 10.0.0.2:80
+iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -d 172.22.x.x -j DNAT --to 10.0.0.2:22
 ~~~
 
 **Para dejar estatico NAT:**

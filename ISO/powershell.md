@@ -84,4 +84,26 @@ Instalar sysinternals
 Install-Package -Name sysinternals -Provider chocolatey
 ~~~
 
-Get-Childitem -Recurse -Inlcude zoomit.exe
+Importar un modulo, creando una sesión con active directory.
+
+~~~
+import-module -pssession $S -name Activedirectory
+~~~
+
+Crear una nueva session.
+
+~~~
+New-Pssessions -computername SERVERA.DOMA.local -credential DOMA\Administrator
+~~~
+
+Conectar a una session.
+
+~~~
+enter-pssession -computername SERVERA.DOMA.local -credential DOMA\Administrator
+~~~
+
+Cambiar el nombre a la maquina mediante powershell.
+
+~~~
+rename-computer -newname nombre -restart
+~~~
