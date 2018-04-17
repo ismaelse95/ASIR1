@@ -90,10 +90,12 @@ Importar un modulo, creando una sesión con active directory.
 import-module -pssession $S -name Activedirectory
 ~~~
 
+***
+
 Crear una nueva session.
 
 ~~~
-New-Pssessions -computername SERVERA.DOMA.local -credential DOMA\Administrator
+New-Pssession -computername SERVERA.DOMA.local -credential DOMA\Administrator
 ~~~
 
 Conectar a una session.
@@ -107,3 +109,16 @@ Cambiar el nombre a la maquina mediante powershell.
 ~~~
 rename-computer -newname nombre -restart
 ~~~
+
+Para iniciar sesion en cliente al administrador servidor desde remmina.
+
+~~~
+Administrator@SANTIAGO.local
+~~~
+
+**Requisitos para conectar una máquina a un dominio.**
+
+- DNS: La ip del servidor.
+- Firewall.
+- La hora tiene que ser la misma.
+- Activar el escritorio remoto.
