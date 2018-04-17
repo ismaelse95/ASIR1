@@ -95,13 +95,13 @@ import-module -pssession $S -name Activedirectory
 Crear una nueva session.
 
 ~~~
-New-Pssession -computername SERVERA.DOMA.local -credential DOMA\Administrator
+New-Pssession -computername ise2012.SANTIAGO.local -credential SANTIAGO\Administrator
 ~~~
 
 Conectar a una session.
 
 ~~~
-enter-pssession -computername SERVERA.DOMA.local -credential DOMA\Administrator
+enter-pssession -computername ise2012.SANTIAGO.local -credential SANTIAGO\Administrator
 ~~~
 
 Cambiar el nombre a la maquina mediante powershell.
