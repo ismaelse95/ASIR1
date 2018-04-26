@@ -88,7 +88,7 @@ Creamos el puente y lo configuramos.
 ~~~
 
 ~~~
-[admin@MikroTikR1] /routing ospf instance> set 0 router-id=10.0.0.1
+[admin@MikroTikR1] /routing ospf instance> set 0 router-id=0.0.0.1
 ~~~
 
 Introducimos el area de ospf.
