@@ -137,13 +137,25 @@ gpresult.exe -h politcas.html
 
 ## NFS Y SAMBA
 
+Necesitamos en la máquina servidora tener instalado el nfs server:
+
+~~~
+apt-get install nfs-kernel-server
+~~~
+
 Máquina servidora entrando al fichero /etc/exports, creamos la carpeta antes en mi caso he creado **mkdir -p /comparitda/debian**:
 
 ~~~
 /compartida/debian 10.0.0.0/24(rw,sync,no_root_squash)
 ~~~
 
-En la máquina cliente, tendremos que poner la ip del servidor:
+Necesitamos en la maquina cleinte tener instalado el nfs:
+
+~~~
+apt-get install nfs-common
+~~~
+
+En la máquina cliente, tendremos que poner la ip del servidor junto con el siguiente comando:
 
 ~~~
 showmount -e 10.0.0.11
@@ -154,3 +166,5 @@ Para conectarse desde el cliente:
 ~~~
 mount -t nfs 10.0.0.11:/compartida/debian /mnt/
 ~~~
+
+
