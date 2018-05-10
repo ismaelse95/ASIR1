@@ -123,6 +123,8 @@ Administrator@SANTIAGO.local
 - La hora tiene que ser la misma.
 - Activar el escritorio remoto.
 
+***
+
 Conectar a la carpeta creada y compartida.
 
 ~~~
@@ -133,6 +135,30 @@ Crear fichero para las politicas que tienes ya en tu equipo.
 
 ~~~
 gpresult.exe -h politcas.html
+~~~
+
+Para ver todos los roles instalados y no instalados en nuesro servidor:
+
+~~~
+Get-windowsfeature 
+~~~
+
+Para ver todos los miembros de los roles.
+
+~~~
+Get-windowsfeature | get-member
+~~~
+
+Para ver una propiedad del rol solo y ver lo que tenemos instalado
+
+~~~
+Get-windowsfeature | where-object {$_.featuretype -eq "Role"}
+~~~
+
+Para ver una propiedad concreta.
+
+~~~
+Get-windowsfeature | where-object {($_.featuretype -eq "Role") and ($_.installstate -eq state)}
 ~~~
 
 ## NFS Y SAMBA
@@ -155,7 +181,7 @@ Necesitamos en la maquina cleinte tener instalado el nfs:
 apt-get install nfs-common
 ~~~
 
-En la máquina cliente, tendremos que poner la ip del servidor junto con el siguiente comando:
+En la máquina cliente **linux**, tendremos que poner la ip del servidor junto con el siguiente comando:
 
 ~~~
 showmount -e 10.0.0.11
@@ -167,4 +193,32 @@ Para conectarse desde el cliente:
 mount -t nfs 10.0.0.11:/compartida/debian /mnt/
 ~~~
 
+***
 
+Ahora pasamos a tener nfs cliente en una máquina windows, para iniciarlo.
+
+~~~
+showmount -e 10.0.0.11
+~~~
+
+~~~
+nfsadmin.exe client start
+~~~
+
+Otra manera de iniciar el nfs.
+
+~~~
+runas /user:ise2012\Administrator "nfsadmin.exe client start"
+~~~
+
+Para conectarse con mount.
+
+~~~
+mount 10.0.0.11:/compartida/debian Z:
+~~~
+
+Otra forma de conectarnos.
+
+~~~
+net use Z: 10.0.0.9:/compartida/debian
+~~~
