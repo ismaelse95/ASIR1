@@ -122,3 +122,35 @@ Administrator@SANTIAGO.local
 - Firewall.
 - La hora tiene que ser la misma.
 - Activar el escritorio remoto.
+
+Conectar a la carpeta creada y compartida.
+
+~~~
+M:\>net use M: \\Ise22016\prueba /user:SANTIAGO\usuario2
+~~~
+
+Crear fichero para las politicas que tienes ya en tu equipo.
+
+~~~
+gpresult.exe -h politcas.html
+~~~
+
+## NFS Y SAMBA
+
+Máquina servidora entrando al fichero /etc/exports, creamos la carpeta antes en mi caso he creado **mkdir -p /comparitda/debian**:
+
+~~~
+/compartida/debian 10.0.0.0/24(rw,sync,no_root_squash)
+~~~
+
+En la máquina cliente, tendremos que poner la ip del servidor:
+
+~~~
+showmount -e 10.0.0.11
+~~~
+
+Para conectarse desde el cliente:
+
+~~~
+mount -t nfs 10.0.0.11:/compartida/debian /mnt/
+~~~
