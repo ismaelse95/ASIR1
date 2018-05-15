@@ -222,3 +222,12 @@ Otra forma de conectarnos.
 ~~~
 net use Z: 10.0.0.9:/compartida/debian
 ~~~
+
+Borrar una unidad de red.
+
+~~~
+net use * /delete
+~~~
+
+
+
