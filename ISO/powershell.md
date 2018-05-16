@@ -131,7 +131,9 @@ Para crear una relacion de confianza tendremos que tener el dns configurado para
 
 Ahora nos dirigimos a herramientas de nuevo --> dominio y confiazna de directorio activo --> dentro pulsamos con click derecho en el dominio y pulsamos en propiedades --> y en la pestaña confianza. 
 
-**Conectar a la carpeta creada y compartida.**
+***
+
+Conectar a la carpeta creada y compartida.
 
 ~~~
 M:\>net use M: \\Ise22016\prueba /user:SANTIAGO\usuario2
