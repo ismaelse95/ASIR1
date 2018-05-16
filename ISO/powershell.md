@@ -161,7 +161,7 @@ Para ver una propiedad concreta.
 Get-windowsfeature | where-object {($_.featuretype -eq "Role") and ($_.installstate -eq state)}
 ~~~
 
-## NFS Y SAMBA
+## NFS
 
 Necesitamos en la máquina servidora tener instalado el nfs server:
 
@@ -229,5 +229,67 @@ Borrar una unidad de red.
 net use * /delete
 ~~~
 
+## SAMBA
 
+Paquetes para configurar el servidor samba:
+
+samba, samba-common, cifs-utils, smbclient.
+
+Fichero de configuración:
+
+~~~
+nano /etc/samba/smb.conf
+~~~
+
+Compartir carpeta dentro de el fichero smb.conf:
+
+~~~
+[samba]
+  coment = directorio samba
+  path = /samba
+  guest ok = yes
+  #Public = no
+  valid users = debian
+  browseable = yes 
+  read only = no
+  create mask = 0775
+  directory mask = 0775
+~~~
+
+Hay dos servicios de samba que son los siguientes y tienen las siguientes funcionalidades.
+
+~~~
+servicio smbd --> servidor smb/cifs
+				  automaticación y atenticación
+				  fichero e impresion compatibles
+
+servicio nmbd --> Servidor de nombre NetBios
+				  Recorrido de recursos
+~~~
+
+Para meter un usuario en el grupo samba en debian:
+
+~~~
+smbpasswd -a [usuario]
+~~~
+
+***
+
+En windows para ver los grupos de trabajo.
+
+~~~
+net view /DOMAIN:WORKGROUP
+~~~
+
+Para ver medieante la ip:
+
+~~~
+net view \\10.0.0.12
+~~~
+
+Para conectarse a la carpeta compartida de debian.
+
+~~~
+net use m: \\10.0.0.12\samba /user:debian
+~~~
 
