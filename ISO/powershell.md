@@ -125,7 +125,7 @@ Administrator@SANTIAGO.local
 
 ***
 
-##Relación de confianza
+## Relación de confianza
 
 Para crear una relacion de confianza tendremos que tener el dns configurado para ello entramos en el administrador del sevidor --> herramientas --> DNS --> ahora daremos click derecho en el nombre del servidor --> propiedades --> pestaña de reenviadores --> añadimos la ip del servidor al que nos queremos conectar.
 
