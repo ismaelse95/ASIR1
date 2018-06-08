@@ -54,6 +54,12 @@ Para entrar en la conexion ssh
 Enter-SshSession x.x.x.x (ip donde nos conectamos)
 ~~~
 
+Instalar un rol.
+
+~~~
+install-windowsfeature -name AD-Service-Controller
+~~~
+
 Para ver los repositorios.
 
 ~~~
@@ -88,6 +94,66 @@ Importar un modulo, creando una sesión con active directory.
 
 ~~~
 import-module -pssession $S -name Activedirectory
+~~~
+
+Contar cuantos cmdlet hay en el sistema.
+
+~~~
+Get-Command | where-object {$_.commandtype -eq "Cmdlet"} | measure
+~~~
+
+Conectar a la carpeta creada y compartida.
+
+~~~
+net use M: \\Ise22016\prueba /user:SANTIAGO\usuario2
+~~~
+
+Crear fichero para las politicas que tienes ya en tu equipo.
+
+~~~
+gpresult.exe -h politcas.html
+~~~
+
+Para ver todos los roles instalados y no instalados en nuesro servidor:
+
+~~~
+Get-windowsfeature 
+~~~
+
+Para ver todos los miembros de los roles.
+
+~~~
+Get-windowsfeature | get-member
+~~~
+
+Para ver una propiedad del rol solo y ver lo que tenemos instalado
+
+~~~
+Get-windowsfeature | where-object {$_.featuretype -eq "Role"}
+~~~
+
+Para ver una propiedad concreta.
+
+~~~
+Get-windowsfeature | where-object {($_.featuretype -eq "Role") -and ($_.installstate -eq "state")}
+~~~
+
+Para ver todos los cmdlet que tenemos en el sistema.
+
+~~~
+Get-Command | where-object {$_.commandtype -eq "Cmdlet"}
+~~~
+
+Desactivar firewall
+
+~~~
+Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False
+~~~
+
+o
+
+~~~
+netsh advfirewall set allprofiles state off
 ~~~
 
 ***
@@ -130,44 +196,6 @@ Administrator@SANTIAGO.local
 Para crear una relacion de confianza tendremos que tener el dns configurado para ello entramos en el administrador del sevidor --> herramientas --> DNS --> ahora daremos click derecho en el nombre del servidor --> propiedades --> pestaña de reenviadores --> añadimos la ip del servidor al que nos queremos conectar.
 
 Ahora nos dirigimos a herramientas de nuevo --> dominio y confiazna de directorio activo --> dentro pulsamos con click derecho en el dominio y pulsamos en propiedades --> y en la pestaña confianza. 
-
-***
-
-Conectar a la carpeta creada y compartida.
-
-~~~
-M:\>net use M: \\Ise22016\prueba /user:SANTIAGO\usuario2
-~~~
-
-Crear fichero para las politicas que tienes ya en tu equipo.
-
-~~~
-gpresult.exe -h politcas.html
-~~~
-
-Para ver todos los roles instalados y no instalados en nuesro servidor:
-
-~~~
-Get-windowsfeature 
-~~~
-
-Para ver todos los miembros de los roles.
-
-~~~
-Get-windowsfeature | get-member
-~~~
-
-Para ver una propiedad del rol solo y ver lo que tenemos instalado
-
-~~~
-Get-windowsfeature | where-object {$_.featuretype -eq "Role"}
-~~~
-
-Para ver una propiedad concreta.
-
-~~~
-Get-windowsfeature | where-object {($_.featuretype -eq "Role") and ($_.installstate -eq state)}
-~~~
 
 ## NFS
 
@@ -257,7 +285,7 @@ Compartir carpeta dentro de el fichero smb.conf:
   path = /samba
   guest ok = yes
   #Public = no
-  valid users = debian
+  valid users = debian o %S
   browseable = yes 
   read only = no
   create mask = 0775
@@ -301,3 +329,20 @@ Para conectarse a la carpeta compartida de debian.
 net use m: \\10.0.0.12\samba /user:debian
 ~~~
 
+***
+
+## Samba
+
+POWERSHELL 
+
+Creacion de usuarios
+
+~~~
+new-localuser empleado1
+~~~
+
+Para ver los usuarios
+
+~~~
+get-localuser
+~~~
