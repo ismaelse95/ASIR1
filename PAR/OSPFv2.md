@@ -1,4 +1,4 @@
-#OSPFv2
+# OSPFv2
 
 Para configurar mediante ospfv2 tendremos que instalar el paquete quagga.
 
