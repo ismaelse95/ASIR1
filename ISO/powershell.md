@@ -6,13 +6,13 @@ Para instalar paquetes.
 install-module -Name (nombremodulo) -Repository PSGallery
 ~~~
 
-Para ver los modulos.
+Para ver los modulos de la sesión actual.
 
 ~~~
 Get-Module
 ~~~
 
-Ver modulos disponibles en el sistema.
+Obtener modulos disponibles en la sesión que sea.
 
 ~~~
 Get-Module -ListAvaliable
@@ -81,7 +81,7 @@ Install-Package -Name putty -Provider chocolatey
 Para ver los directorios y los permisos.
 
 ~~~
-Get-Chliditem
+Get-Childitem
 ~~~
 
 Instalar sysinternals
@@ -126,22 +126,46 @@ Para ver todos los miembros de los roles.
 Get-windowsfeature | get-member
 ~~~
 
-Para ver una propiedad del rol solo y ver lo que tenemos instalado
+Para ver una propiedad del rol solo y ver lo que tenemos instalado y no instalados.
 
 ~~~
 Get-windowsfeature | where-object {$_.featuretype -eq "Role"}
 ~~~
 
-Para ver una propiedad concreta.
+Para ver los roles que están instalados.
 
 ~~~
-Get-windowsfeature | where-object {($_.featuretype -eq "Role") -and ($_.installstate -eq "state")}
+Get-windowsfeature | where-object {($_.featuretype -eq "Role") -and ($_.installstate -eq "installed")}
+~~~
+
+Para ver un rol en concreto si está instalado.
+
+~~~
+Get-WindowsFeature -name NFS-client
+~~~
+
+Desinstalar un rol o caracteristica.
+
+~~~
+remove-WindowsFeature nfs-client
+~~~
+
+Mostrar roles instalados.
+
+~~~
+Get-WindowsFeature | where-object {$_.Installed -eq $True} | format-list DisplayName
 ~~~
 
 Para ver todos los cmdlet que tenemos en el sistema.
 
 ~~~
 Get-Command | where-object {$_.commandtype -eq "Cmdlet"}
+~~~
+
+Muestra todos los cmdlet instalados y por grupo.
+
+~~~
+Get-Command -Type Cmdlet | Sort-Object -Property Noun | Format-Table -GroupBy Noun
 ~~~
 
 Desactivar firewall
